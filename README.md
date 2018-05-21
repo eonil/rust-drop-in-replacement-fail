@@ -46,11 +46,11 @@ I built and install it with `cargo install`.
        Replacing /Users/Eonil/.cargo/bin/fail1
     [~/Workshop/Playground/bug-reproduction/rust-drop-in-replacement-fail/fail1] (master)
     
-And I override `rustc` with `fail1`.
+And I overriden `rustc` with `fail1`.
 
     export RUSTC=fail1
 
-And move to `foo1` and build it. It fails.
+And moved to `foo1` and build it. It fails.
 
     Eonil$ cargo clean; cargo build --verbose
 
