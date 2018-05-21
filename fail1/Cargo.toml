@@ -1,0 +1,6 @@
+[package]
+name = "fail1"
+version = "0.1.0"
+authors = ["eonil <pub.dev@eonil.com>"]
+
+[dependencies]
