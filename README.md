@@ -1,5 +1,6 @@
 
-failure example.
+rust-drop-in-replacement-fail
+=============================
 
 
 I am trying to make a drop-in replacement tool for `rustc`.
@@ -23,7 +24,19 @@ I confirmed that `foo1` project gets built with no problem with nightly `cargo`.
         Finished dev [unoptimized + debuginfo] target(s) in 0.03s
     [~/Workshop/Playground/bug-reproduction/rust-drop-in-replacement-fail/foo1] (master)
 
-For my tool `fail1`, I built and install it with `cargo install`.
+My tool `fail1` is very simple.
+
+    #![feature(rustc_private)]
+    #![feature(link_args)]
+
+    extern crate rustc_driver;
+
+    fn main() {
+        rustc_driver::set_sigpipe_handler();
+        rustc_driver::main();
+    }
+
+I built and install it with `cargo install`.
 
     Eonil$ cargo clean; cargo install --force
     warning: To build the current package use `cargo build`, to install the current package run `cargo install --path .`
@@ -55,4 +68,5 @@ And move to `foo1` and build it. It fails.
     [~/Workshop/Playground/bug-reproduction/rust-drop-in-replacement-fail/foo1] (master)
 
 No idea why.
+
 
